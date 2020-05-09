@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .calculator button{
+            width: 24px;
+            height: 24px;
+            border-radius: 5px;
+            border: 2px solid black;
+        }
+        .calculator div {
+            margin-top: 5px;
+            width: 108px;
+        }
+        #screen {
+            background: gray;
+            height: 30px;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        var screen = '';
+        var copheptinh = false;
+        var operator = '';
+        jQuery(document).ready(function(){
+            // $('#num7').click(
+            // function() {
+            //     screen = screen + '7';
+            //     $('#screen').html(screen);
+            // });
+            // $('#num8').click(
+            // function() {
+            //     screen = screen + '8';
+            //     $('#screen').html(screen);
+            // });
+            // $('#num9').click(
+            // function() {
+            //     screen = screen + '9';
+            //     $('#screen').html(screen);
+            // });
+            // $('#keyx').click(
+            // function() {
+            //     screen = screen + 'x';
+            //     $('#screen').html(screen);
+            // });
+            $(":button").click(
+                function() {
+                    screen = screen + $(this).attr('ht');
+                    $('#screen').html(screen);
+                }
+            )
+            $('#result').click(function() {
+                let number = screen.split(operator);
+                let result = '';
+                switch(operator) {
+                    case 'x':
+                        result =  parseFloat(number[0]) * parseFloat(number[1]);
+                        break;
+                    case '+':
+                    result =  parseFloat(number[0]) + parseFloat(number[1]);
+                        break;
+                    case '-':
+                    result =  parseFloat(number[0]) - parseFloat(number[1]);
+                        break;
+                    case '/':
+                    result =  parseFloat(number[0]) / parseFloat(number[1]);
+                        break;
+                    default:
+                }
+                screen = result;
+                $('#screen').html(screen);
+                copheptinh = false;
+            });
+            $('.cal').click(
+                function(){
+                    if(!copheptinh) {
+                        copheptinh = true;
+                        operator = $(this).attr('ht');
+                    } else {
+                        let number = screen.split(operator);
+                        let result = '';
+                        switch(operator) {
+                            case 'x':
+                                result =  parseFloat(number[0]) * parseFloat(number[1]);
+                                break;
+                            case '+':
+                            result =  parseFloat(number[0]) + parseFloat(number[1]);
+                                break;
+                            case '-':
+                            result =  parseFloat(number[0]) - parseFloat(number[1]);
+                                break;
+                            case '/':
+                            result =  parseFloat(number[0]) / parseFloat(number[1]);
+                                break;
+                            default:
+                        }
+                        screen = result;
+                        operator = $(this).attr('ht');
+                        screen += operator;
+                        $('#screen').html(screen);
+                        
+                    }
+                }
+            )
+        });  
+    </script>
+</head>
+<body>
+
+    <div class = 'calculator'>
+        <div id = 'screen'>
+            
+        </div>
+        <div>
+            <button ht='7' id='num7'>7</button>
+            <button ht='8' id='num8'>8</button>
+            <button ht = '9' id='num9'>9</button>
+            <button ht ='x' id='keyx' class='cal'>X</button>
+        </div>
+        <div>
+            <button ht = '4' >4</button>
+            <button ht = '5'>5</button>
+            <button ht = '6'>6</button>
+            <button ht = '-' class='cal'>-</button>
+        </div>
+        <div>
+            <button ht = '1'>1</button>
+            <button ht = '2'>2</button>
+            <button ht = '3'>3</button>
+            <button ht = '+' class='cal'>+</button>
+        </div>
+        <div>
+            <button ht='/' class='cal'>/</button>
+            <button ht = '0'>0</button>
+            <button ht='.'>.</button>
+            <button ht='' id='result'>=</button>
+        </div>
+    </div>
+</body>
+</html>
