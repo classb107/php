@@ -17,7 +17,10 @@
         }
         #screen {
             background: gray;
+            word-break: break-all;
             height: 30px;
+            padding: 5px;
+            overflow-y: scroll;
         }
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -25,6 +28,8 @@
         var screen = '';
         var copheptinh = false;
         var operator = '';
+        var cosothu2 = false;
+
         jQuery(document).ready(function(){
             // $('#num7').click(
             // function() {
@@ -46,31 +51,22 @@
             //     screen = screen + 'x';
             //     $('#screen').html(screen);
             // });
-            $(":button").click(
+            $(".so").click(
                 function() {
                     screen = screen + $(this).attr('ht');
+                    let number = screen.split(operator);
+                    if(copheptinh) {
+                        cosothu2 = true;
+                    }
                     $('#screen').html(screen);
                 }
             )
             $('#result').click(function() {
-                let number = screen.split(operator);
-                let result = '';
-                switch(operator) {
-                    case 'x':
-                        result =  parseFloat(number[0]) * parseFloat(number[1]);
-                        break;
-                    case '+':
-                    result =  parseFloat(number[0]) + parseFloat(number[1]);
-                        break;
-                    case '-':
-                    result =  parseFloat(number[0]) - parseFloat(number[1]);
-                        break;
-                    case '/':
-                    result =  parseFloat(number[0]) / parseFloat(number[1]);
-                        break;
-                    default:
+                if(!cosothu2) {
+                    return;
                 }
-                screen = result;
+                let number = screen.split(operator);
+                screen = tinhtoan(operator,number);
                 $('#screen').html(screen);
                 copheptinh = false;
             });
@@ -79,25 +75,19 @@
                     if(!copheptinh) {
                         copheptinh = true;
                         operator = $(this).attr('ht');
+                        screen += operator;
+                        $('#screen').html(screen);
                     } else {
-                        let number = screen.split(operator);
-                        let result = '';
-                        switch(operator) {
-                            case 'x':
-                                result =  parseFloat(number[0]) * parseFloat(number[1]);
-                                break;
-                            case '+':
-                            result =  parseFloat(number[0]) + parseFloat(number[1]);
-                                break;
-                            case '-':
-                            result =  parseFloat(number[0]) - parseFloat(number[1]);
-                                break;
-                            case '/':
-                            result =  parseFloat(number[0]) / parseFloat(number[1]);
-                                break;
-                            default:
+                        if(!cosothu2) {
+                            screen = screen.substring(0, screen.length - 1);
+                            operator = $(this).attr('ht');
+                            screen += operator;
+                            $('#screen').html(screen);
+                            return;
                         }
-                        screen = result;
+                        cosothu2 = false;
+                        let number = screen.split(operator);
+                        screen = tinhtoan(operator,number);
                         operator = $(this).attr('ht');
                         screen += operator;
                         $('#screen').html(screen);
@@ -106,35 +96,53 @@
                 }
             )
         });  
+    function tinhtoan(operator,number) {
+        let result = 0;
+        switch(operator) {
+            case 'x':
+                result =  parseFloat(number[0]) * parseFloat(number[1]);
+                break;
+            case '+':
+            result =  parseFloat(number[0]) + parseFloat(number[1]);
+                break;
+            case '-':
+            result =  parseFloat(number[0]) - parseFloat(number[1]);
+                break;
+            case '/':
+            result =  parseFloat(number[0]) / parseFloat(number[1]);
+                break;
+            default:
+        }
+        return result;
+    }
     </script>
 </head>
 <body>
 
     <div class = 'calculator'>
-        <div id = 'screen'>
-            
+        <div id = 'screen'>      
         </div>
         <div>
-            <button ht='7' id='num7'>7</button>
-            <button ht='8' id='num8'>8</button>
-            <button ht = '9' id='num9'>9</button>
-            <button ht ='x' id='keyx' class='cal'>X</button>
+            <button ht='7' class='so'>7</button>
+            <button ht='8' class='so'>8</button>
+            <button ht = '9' class='so'>9</button>
+            <button ht ='x' class='cal'>X</button>
         </div>
         <div>
-            <button ht = '4' >4</button>
-            <button ht = '5'>5</button>
-            <button ht = '6'>6</button>
+            <button ht = '4' class='so'>4</button>
+            <button ht = '5' class='so'>5</button>
+            <button ht = '6' class='so'>6</button>
             <button ht = '-' class='cal'>-</button>
         </div>
         <div>
-            <button ht = '1'>1</button>
-            <button ht = '2'>2</button>
-            <button ht = '3'>3</button>
+            <button ht = '1' class='so'>1</button>
+            <button ht = '2' class='so'>2</button>
+            <button ht = '3' class='so'>3</button>
             <button ht = '+' class='cal'>+</button>
         </div>
         <div>
             <button ht='/' class='cal'>/</button>
-            <button ht = '0'>0</button>
+            <button ht = '0' class='so'>0</button>
             <button ht='.'>.</button>
             <button ht='' id='result'>=</button>
         </div>
