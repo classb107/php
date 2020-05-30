@@ -20,7 +20,18 @@ class BaseModel
             die("Connection failed: " . $this->conn->connect_error);
         }
     }
-
+    static public function connectStatic() {
+        $host = 'localhost';
+        $dataBase = 'sinhvien';
+        $user = 'root';
+        $password = '';
+        $conn = new mysqli($host, $user, $password, $dataBase);
+        // Check connection
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+        return $conn;
+    }
     function getData() {
         $this->connect();
         $sql = "SELECT * FROM " . $this->table;

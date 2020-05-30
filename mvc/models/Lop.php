@@ -1,19 +1,16 @@
 <?php
 include_once('BaseModel.php');
-class SinhVien extends BaseModel
+class Lop extends BaseModel
 {
-    public $id;
-    public $ten;
-    public $tuoi;
-    public $gioitinh;
     function __construct() {
         parent::__construct();
-        $this->table = 'sinhvien';
+        $this->table = 'lop';
     }
-    public function tktheolop($id_lop) {
+
+    public function tkIdGiangVien($idGiangVien) {
         $this->connect();
         $sql = "SELECT * FROM " . $this->table
-        . " WHERE id_class = '" . $id_lop . "'";
+        . " WHERE id_giangvien = '" . $idGiangVien . "'";
         $resultQuery = $this->conn->query($sql);
         $result = [];
         if ($resultQuery) {
