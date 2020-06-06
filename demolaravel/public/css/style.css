@@ -1,0 +1,11 @@
+body {
+    background: red;
+}
+main {
+    min-height: 700px;
+}
+.footer {
+    background: black;
+    color:white;
+    text-align: center;
+}
