@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 06, 2020 at 08:11 AM
+-- Generation Time: Jun 07, 2020 at 08:17 AM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 7.1.7
 
@@ -21,6 +21,64 @@ SET time_zone = "+00:00";
 --
 -- Database: `demolaravel`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `animal`
+--
+
+CREATE TABLE `animal` (
+  `id` int(11) NOT NULL,
+  `ten` varchar(45) NOT NULL,
+  `tuoi` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `animal`
+--
+
+INSERT INTO `animal` (`id`, `ten`, `tuoi`) VALUES
+(1, 'cho', 1),
+(2, 'meo', 2),
+(3, 'ga', 2),
+(4, 'vit', 3);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `khachhang`
+--
+
+CREATE TABLE `khachhang` (
+  `id` int(11) NOT NULL,
+  `ten` varchar(45) DEFAULT NULL,
+  `sdt` varchar(15) DEFAULT NULL,
+  `ngaymuahang` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `khachhang`
+--
+
+INSERT INTO `khachhang` (`id`, `ten`, `sdt`, `ngaymuahang`) VALUES
+(2, 'KH5', '0938333222', '2020-05-14 00:00:00'),
+(3, 'Nguyen Thanh An', '0922322120', '2020-05-13 00:00:00'),
+(4, 'Tran An', '0955555120', '2020-05-13 00:00:00'),
+(5, 'Tran Thanh Quy', '0933222333', '2020-05-16 00:00:00'),
+(6, 'Ho Van Tam', '0944333222', '2020-05-17 00:00:00'),
+(7, 'Vo Mui', '0833221111', '2020-05-17 00:00:00'),
+(8, 'Vo Mui', '0833221111', '2020-05-17 00:00:00'),
+(9, 'Vo Mui', '0833221111', '2020-05-17 00:00:00'),
+(10, 'Vo Mui', '0833221111', '2020-05-17 00:00:00'),
+(11, 'Vo Mui', '0833221111', '2020-05-17 00:00:00'),
+(12, 'Vo Mui', '0833221111', '2020-05-17 00:00:00'),
+(13, 'Vo Mui', '0833221111', '2020-05-17 00:00:00'),
+(14, 'Vo Mui', '0833221111', '2020-05-17 00:00:00'),
+(15, 'Vo Mui', '0833221111', '2020-05-17 00:00:00'),
+(16, 'Vo Mui', '0833221111', '2020-05-17 00:00:00'),
+(17, 'Vo Mui', '0833221111', '2020-05-17 00:00:00'),
+(18, 'Vo Mui', '0833221111', '2020-05-17 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -57,6 +115,30 @@ CREATE TABLE `password_resets` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `sanpham`
+--
+
+CREATE TABLE `sanpham` (
+  `id` int(11) NOT NULL,
+  `ten` varchar(45) DEFAULT NULL,
+  `gia` int(11) DEFAULT NULL,
+  `soluong` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `sanpham`
+--
+
+INSERT INTO `sanpham` (`id`, `ten`, `gia`, `soluong`) VALUES
+(1, 'sp1', 33, 2),
+(2, 'SP2', 35, 4),
+(3, NULL, 22, 5),
+(4, 'sp3', 22, 5),
+(5, 'sp3', 22, 5);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -83,6 +165,18 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `re
 --
 
 --
+-- Indexes for table `animal`
+--
+ALTER TABLE `animal`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `khachhang`
+--
+ALTER TABLE `khachhang`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
@@ -93,6 +187,12 @@ ALTER TABLE `migrations`
 --
 ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`);
+
+--
+-- Indexes for table `sanpham`
+--
+ALTER TABLE `sanpham`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `users`
@@ -106,10 +206,25 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `animal`
+--
+ALTER TABLE `animal`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `khachhang`
+--
+ALTER TABLE `khachhang`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+--
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `sanpham`
+--
+ALTER TABLE `sanpham`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `users`
 --
