@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>website</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>website</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    Ten task: <input id="ten"><br/>
+    Mota: <input id="mota"><br/>
+    Ngay: <input id="ngay" type="datetime-local"><br/>  
+    <button id = "xacnhan">submit</button>
+</body>
+<script>
+
+    $("#xacnhan").click(function(){
+        console.log('vaoday');
+        let ten = $('#ten').val();
+        let mota = $('#mota').val();
+        let ngay = $('#ngay').val();
+        let sendData = {ten:ten, mota:mota, ngay:ngay};
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            url: "http://demoapi.test:8181/api/task",
+            data: sendData,
+            success: function(result){
+                alert(result.message);
+            }
+        });
+    });
+</script>
+</html>

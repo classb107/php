@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>website</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+    <div id="main"></div> 
+    <button id="button">test</button>  
+    <button id = "gettask">get task</button>
+</body>
+<script>
+    $("#button").click(function(){
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            url: "http://demoapi.test:8181/api/test2", 
+            success: function(result){
+                console.log(result);
+                $("#main").html(result);
+            }
+        });
+    });
+    $("#gettask").click(function(){
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            url: "http://demoapi.test:8181/api/task", 
+            success: function(result){
+                console.log(result);
+                let string = "";
+                if (result.status) {
+                    let data = result.data;
+                    for(i = 0; i<data.length; i++) {
+                        string += "<span>"+data[i].tentask+" </span>";
+                        string += "<span>"+data[i].mota+" </span>";
+                        string += "<span>"+data[i].thoigian+" </span> </br>";
+                    }
+                    alert(result.message);
+                }
+                $("#main").html(string);
+            }
+        });
+    });
+</script>
+</html>
