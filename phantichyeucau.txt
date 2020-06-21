@@ -1,0 +1,36 @@
+bài tập:
+tạo website tin tức cho phép đăng bài
+user phải đăng nhập thì mới đăng bài được
+- bài viết phải có phần tiêu đề và phần nội dung
+- bài viết phải hiển thị tên tác giả ở cuối bài
+- bài viết cho phép chèn 1 hình ảnh ban đầu
+luann2424t@gmail.com
+B1: chọn công nghệ
+ - laravel
+ 
+B2: phân tích xem có những trang nào
+
+ - trang tin tức (danh sách)
+ - trang tin tức chi tiết
+ 
+quản lý :
+ - phần đăng nhập ( dùng của laravel)
+ - trang đăng tin
+ 
+B3: thiết kế DB
+ - table tin tức (tiêu đề, nội dung, tên tác giả)
+
+B4: Code
+	  - dựng source
+	  - code các trang phía trên theo lần lượt
+
+database
+ 1/ tintuc
+	+ id
+	+ tieude
+	+ noidung
+	+ image
+	+ id_user
+	
+	
+https://github.com/classb107/php.git

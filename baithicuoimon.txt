@@ -1,0 +1,12 @@
+mô tả yêu cầu :
+khách hàng Jullia ở đức là một quan sát viên động vật.
+chị cần 1 website để giúp quản lý công việc của mình.
+website cho phép đăng thông tin và hình ảnh động vật quan sát được lên.
+- mỗi con vật sẽ được phân loại theo loài vd như là động vật có xương sống, thân đốt, côn trùng.
+- với mỗi con, người dùng có thể up 1 hoặc nhiều hình ảnh.
+- yêu cầu là chỉ có chị hoặc những người chị cho phép mới được quyền đăng tin lên
+- muốn truy cập vào website thì phải đăng kí tài khoản( tài khoản này chỉ có thể xem được
+không thể đăng bài).
+
+ - luann2424t@gmail.com
+ - Authentication 
